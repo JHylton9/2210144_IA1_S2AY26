@@ -12,6 +12,8 @@
   --max-width: 950px;
   --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   --border: 1px solid rgba(255, 255, 255, 0.08);
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
 }
 
 * {
@@ -94,6 +96,13 @@ section {
   border: var(--border); /* border */
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium), border-color var(--transition-medium);
+}
+
+section:hover {
+  transform: translateY(-4px);
+  border-color: rgba(96, 165, 250, 0.35);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.4);
 }
 
 section h2 {
@@ -106,15 +115,28 @@ section h2 {
   margin: 14px auto 10px; /* margin */
   border-radius: 50%;
   border: 4px solid rgba(96, 165, 250, 0.7);
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+#about img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.35);
 }
 
 /* Resume/professional blocks */
 .resume-block {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 14px;
   margin-top: 12px;
+    transition: background var(--transition-medium), transform var(--transition-medium), border-color var(--transition-medium);
+}
+
+.resume-block:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.35);
 }
 
 .resume-block h3 {
@@ -123,8 +145,34 @@ section h2 {
   font-size: 1rem;
 }
 
-.muted-text {
+.favorites-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 16px;
+  transition: background var(--transition-medium), transform var(--transition-medium), border-color var(--transition-medium);
+}
+
+.favorites-card h3 {
+  margin: 0 0 10px;
   color: var(--muted);
+}
+
+.favorites-card p {
+  margin: 6px 0;
+  color: var(--text);
+}
+
+.favorites-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+
+.muted-text {
+  color: var(--text);
   font-size: 0.95em;
 }
 
@@ -136,11 +184,12 @@ ul {
 
 li {
   margin: 6px 0;
-  color: var(--muted);
+  color: var(--text);
 }
 
 a {
   color: var(--accent);
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
 }
 
 a:hover {
@@ -156,7 +205,7 @@ footer {
   max-width: var(--max-width);
   margin: 22px auto 40px;
   padding: 0 16px;
-  color: var(--muted);
+  color: var(--text);
 }
 
 footer p:last-child {
@@ -172,11 +221,20 @@ footer p:last-child a {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background 0.2s ease;
+  transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
 }
 
 footer p:last-child a:hover {
   background: var(--accent-soft);
+    border-color: rgba(96, 165, 250, 0.65);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
 
 /* Responsive design: min 600px */
