@@ -1,0 +1,239 @@
+:root {
+  --bg: #122750;
+  --surface: #111b2e;
+  --text: #eef2ff;
+  --muted: #c7d2fe;
+  --accent: #60a5fa;
+  --accent-soft: rgba(96, 165, 250, 0.18);
+
+  --font: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  --radius: 14px;
+  --max-width: 950px;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  --border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Header + nav */
+header {
+  background: var(--surface);
+  padding: 18px 16px;
+  border-bottom: var(--border);
+}
+
+header img {
+  vertical-align: middle;
+}
+
+header h1 {
+  display: inline-block;
+  margin: 0 0 0 10px;
+  font-size: 22px;
+  vertical-align: middle;
+}
+
+/* Class selector */
+.main-nav {
+  max-width: var(--max-width);
+  margin: 12px auto 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Pseudo-classes */
+.main-nav a:hover,
+.main-nav a:focus {
+  outline: none;
+  background: var(--accent-soft);
+  border-color: rgba(96, 165, 250, 0.65);
+}
+
+.main-nav a:active {
+  transform: translateY(1px);
+}
+
+/* Main layout + sections */
+main {
+  max-width: var(--max-width);
+  margin: 22px auto;
+  padding: 0 16px;
+  display: grid;
+  gap: 16px;
+}
+
+section {
+  background: var(--surface);
+  padding: 18px; /* padding */
+  margin: 0;     /* margin controlled by grid gap */
+  border: var(--border); /* border */
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+/* ID selector */
+#about img {
+  display: block;
+  margin: 14px auto 10px; /* margin */
+  border-radius: 50%;
+  border: 4px solid rgba(96, 165, 250, 0.7);
+}
+
+/* Resume/professional blocks */
+.resume-block {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 14px;
+  margin-top: 12px;
+}
+
+.resume-block h3 {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.muted-text {
+  color: var(--muted);
+  font-size: 0.95em;
+}
+
+/* Lists + links */
+ul {
+  margin: 10px 0 0 18px;
+  padding-left: 0.5rem;
+}
+
+li {
+  margin: 6px 0;
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #93c5fd;
+}
+
+/* Footer */
+footer {
+  max-width: var(--max-width);
+  margin: 22px auto 40px;
+  padding: 0 16px;
+  color: var(--muted);
+}
+
+footer p:last-child {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+footer p:last-child a {
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.2s ease;
+}
+
+footer p:last-child a:hover {
+  background: var(--accent-soft);
+}
+
+/* Responsive design: min 600px */
+@media (min-width: 600px) {
+  header {
+    padding: 20px 24px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  main {
+    padding: 0 24px;
+  }
+
+  #about {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    align-items: center;
+  }
+
+  #about h2,
+  #about p {
+    grid-column: 2;
+  }
+
+  #about img {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    margin: 0;
+  }
+}
+
+/* Responsive design: min 950px */
+@media (min-width: 950px) {
+  :root {
+    --max-width: 1100px;
+  }
+
+  .main-nav {
+    justify-content: center;
+  }
+
+  main {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 0 32px;
+  }
+
+  #about,
+  #professional {
+    grid-column: 1 / -1;
+  }
+
+  footer {
+    padding: 0 32px;
+  }
+}
